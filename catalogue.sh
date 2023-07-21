@@ -1,39 +1,39 @@
-echo "<<<<<<<<< Create Catalouge Service <<<<<<<<<"
+echo ">>>>>>>>> Create Catalouge Service >>>>>>>>>"
 cp catalogue.service /etc/systemd/system/catalogue.service
 
-echo "<<<<<<<<< Create MongoRepo <<<<<<<<<"
+echo ">>>>>>>>> Create MongoRepo >>>>>>>>>"
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 
-echo "<<<<<<<<< Install NodeJs Repo <<<<<<<<<"
+echo ">>>>>>>>> Install NodeJs Repo >>>>>>>>>"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-echo "<<<<<<<<< Install NodeJS <<<<<<<<<"
+echo ">>>>>>>>> Install NodeJS >>>>>>>>>"
 yum install nodejs -y
 
-echo "<<<<<<<<< Create Application User <<<<<<<<<"
+echo ">>>>>>>>> Create Application User >>>>>>>>>"
 useradd roboshop
 
-echo "<<<<<<<<< Create Application Directory <<<<<<<<<"
+echo ">>>>>>>>> Create Application Directory >>>>>>>>>"
 mkdir /app
 
-echo "<<<<<<<<< Download application content <<<<<<<<<"
+echo ">>>>>>>>> Download application content >>>>>>>>>"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
 
-echo "<<<<<<<<< Extract application content <<<<<<<<<"
+echo ">>>>>>>>> Extract application content >>>>>>>>>"
 cd /app
 unzip /tmp/catalogue.zip
 cd /app
 
-echo "<<<<<<<<< Download NodeJs Dependencies <<<<<<<<<"
+echo ">>>>>>>>> Download NodeJs Dependencies >>>>>>>>>"
 npm install
 
-echo "<<<<<<<<< Install Mongo Client <<<<<<<<<"
+echo ">>>>>>>>> Install Mongo Client >>>>>>>>>"
 yum install mongodb-org-shell -y
 
-echo "<<<<<<<<< Load Catalogue schema <<<<<<<<<"
+echo ">>>>>>>>> Load Catalogue schema >>>>>>>>>"
 mongo --host mongodb.kdevops304.online </app/schema/catalogue.js
 
-echo "<<<<<<<<< Restart the server <<<<<<<<<"
+echo ">>>>>>>>> Restart the server >>>>>>>>>"
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl restart catalogue
