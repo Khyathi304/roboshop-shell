@@ -1,6 +1,10 @@
 log=/tmp/roboshop.log
 
 func_apppreq() {
+
+    echo -e "\e[36m>>>>>>>>> create a ${component} service file <<<<<<<<<<\e[0m"
+    cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
+
     echo -e "\e[36m>>>>>>>>> Create Application User <<<<<<<<<<\e[0m"
     useradd roboshop &>>${log}
 
@@ -27,10 +31,6 @@ func_systemd() {
 }
 
 func_nodejs(){
-
-
-  echo -e "\e[36m>>>>>>>>> Create ${component} Service <<<<<<<<<<\e[0m"
-  cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
 
   echo -e "\e[36m>>>>>>>>> Create MongoRepo <<<<<<<<<<\e[0m"
   cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
@@ -77,4 +77,17 @@ func_java() {
 
   func_systemd
 
+}
+
+func_python() {
+
+  echo -e "\e[36m>>>>>>>>> Install Python <<<<<<<<<<\e[0m"
+  yum install python36 gcc python3-devel -y
+
+  func_apppreq
+
+  echo -e "\e[36m>>>>>>>>> Build ${component} service  <<<<<<<<<<\e[0m"
+  pip3.6 install -r requirements.txt
+
+  func_systemd
 }
