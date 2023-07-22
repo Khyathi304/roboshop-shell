@@ -91,3 +91,18 @@ func_python() {
 
   func_systemd
 }
+
+func_golang() {
+
+  echo -e "\e[36m>>>>>>>>> Install Golang  <<<<<<<<<<\e[0m"
+  yum install golang -y &>>${log}
+
+  func_apppreq
+
+  echo -e "\e[36m>>>>>>>>> Build ${component} service  <<<<<<<<<<\e[0m"
+  go mod init dispatch &>>${log}
+  go get &>>${log}
+  go build &>>${log}
+
+ func_systemd
+}
