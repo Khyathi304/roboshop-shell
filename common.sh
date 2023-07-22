@@ -1,7 +1,7 @@
 nodejs(){
   log=/tmp/roboshop.log
 
-  echo -e "\e[36m>>>>>>>>> Create user Service <<<<<<<<<<\e[0m"
+  echo -e "\e[36m>>>>>>>>> Create ${component} Service <<<<<<<<<<\e[0m"
   cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
 
   echo -e "\e[36m>>>>>>>>> Create MongoRepo <<<<<<<<<<\e[0m"
