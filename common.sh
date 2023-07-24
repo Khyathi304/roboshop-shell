@@ -42,8 +42,7 @@ func_schema_setup() {
 
     fi
 
-    if [ "${schema_type}" == "mysql" ]
-    then
+    if [ "${schema_type}" == "mysql" ]; then
 
     echo -e "\e[36m>>>>>>>>> Install MySql Client  <<<<<<<<<<\e[0m"
     yum install mysql -y &>>${log}
