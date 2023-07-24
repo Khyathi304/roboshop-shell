@@ -1,4 +1,4 @@
-   source common.sh
+
 
     echo -e "\e[36m>>>>>>>>> Copy Roboshop Configuration <<<<<<<<<<\e[0m"
     cp nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf &>>${log}
