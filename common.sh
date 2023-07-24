@@ -156,5 +156,5 @@ func_golang() {
   go build &>>${log}
   func_exit-status
 
- func_systemd
+  func_systemd
 }
