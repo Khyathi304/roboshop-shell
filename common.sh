@@ -42,7 +42,8 @@ func_schema_setup() {
 
     fi
 
-    if [ "${schema_type}" == "mysql"]; then
+    if [ "${schema_type}" == "mysql" ]
+    then
 
     echo -e "\e[36m>>>>>>>>> Install MySql Client  <<<<<<<<<<\e[0m"
     yum install mysql -y &>>${log}
@@ -50,7 +51,7 @@ func_schema_setup() {
     echo -e "\e[36m>>>>>>>>> Load Schema  <<<<<<<<<<\e[0m"
     mysql -h mysql.kdevops304.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
 
-        fi
+    fi
 }
 
 func_nodejs(){
