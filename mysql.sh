@@ -4,7 +4,6 @@ if [ -z "${mysql_root_password}" ]; then
   exit
 fi
 cp mysql.repo /etc/yum.repos.d/mysql.repo
-
 yum module disable mysql -y
 yum install mysql-community-server -y
 systemctl enable mysqld
